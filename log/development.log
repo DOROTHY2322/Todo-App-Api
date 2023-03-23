@@ -1,0 +1,92 @@
+  [1m[35m (163.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (117.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230323085123)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar NOT NULL, "email" varchar NOT NULL, "password_digest" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230323085123"]]
+  [1m[36mTRANSACTION (138.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-23 08:52:50.475802"], ["updated_at", "2023-03-23 08:52:50.475802"]]
+  [1m[36mTRANSACTION (106.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "//users" for 127.0.0.1 at 2023-03-23 11:58:24 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/dorothy/Development/code/phase-4/Todo-App-Api/app/controllers/application_controller.rb:9: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/application_controller.rb:9: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/application_controller.rb:9: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "//users" for 127.0.0.1 at 2023-03-23 11:58:38 +0300
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:2:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+Started POST "//users" for 127.0.0.1 at 2023-03-23 11:59:17 +0300
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:3:in `<class:User>'
+app/models/user.rb:2:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+Started POST "//users" for 127.0.0.1 at 2023-03-23 11:59:51 +0300
+  
+SyntaxError (/home/dorothy/Development/code/phase-4/Todo-App-Api/app/models/user.rb:14: syntax error, unexpected `end', expecting end-of-input):
+  
+app/models/user.rb:14: syntax error, unexpected `end', expecting end-of-input
+app/models/user.rb:14: syntax error, unexpected `end', expecting end-of-input
+Started POST "//users" for 127.0.0.1 at 2023-03-23 12:00:10 +0300
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:2:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+Started POST "//users" for 127.0.0.1 at 2023-03-23 12:00:28 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"Dorothy", "password"=>"[FILTERED]", "email"=>"dorothy@gmail.com", "user"=>{"username"=>"Dorothy", "email"=>"dorothy@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007fe8508ca7b8>, params: {"username"=>"Dorothy", "password"=>"[FILTERED]", "email"=>"dorothy@gmail.com", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"Dorothy", "email"=>"dorothy@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Dorothy"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "dorothy@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Create (48.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Dorothy"], ["email", "dorothy@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-03-23 09:00:29.249701"], ["updated_at", "2023-03-23 09:00:29.249701"]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mTRANSACTION (116.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "Dorothy"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "dorothy@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+Completed 500 Internal Server Error in 668ms (ActiveRecord: 168.4ms | Allocations: 45711)
+
+
+  
+NoMethodError (undefined method `save_user' for #<UsersController:0x00000000008750>):
+  
+app/controllers/users_controller.rb:5:in `register'
+Started POST "//users" for 127.0.0.1 at 2023-03-23 12:01:03 +0300
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"Dorothy", "password"=>"[FILTERED]", "email"=>"dorothy@gmail.com", "user"=>{"username"=>"Dorothy", "email"=>"dorothy@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007fe854123df8>, params: {"username"=>"Dorothy", "password"=>"[FILTERED]", "email"=>"dorothy@gmail.com", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"Dorothy", "email"=>"dorothy@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Dorothy"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "dorothy@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Dorothy"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "dorothy@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+Completed 422 Unprocessable Entity in 400ms (Views: 73.6ms | ActiveRecord: 2.8ms | Allocations: 9757)
+
+
