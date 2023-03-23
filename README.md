@@ -45,3 +45,34 @@
 - Remember to replace your username when cloning.
 
         - git@github.com:DOROTHY2322/Todo-App-Api.git
+
+# Project SetUp
+
+ - This is a backend ruby on rails Api
+
+ - To create a new rails api
+
+         -  rails new (name of the api) --skip-git --skip-javascript --skip-test-frammework
+
+- to install all the gem dependencies
+
+        -  bundle install
+
+ - To run the server
+  
+         - rails s
+
+#  Technologies Used
+ 
+ - Ruby on Rails
+
+ # Authors
+- This project was contributed to by:
+
+- DOROTHY JEBET
+
+# License
+
+- MIT License
+
+- Copyright (c) 2023 DOROTHY2322
