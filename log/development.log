@@ -357,3 +357,33 @@ Processing by UsersController#register as */*
 Completed 422 Unprocessable Entity in 220ms (Views: 43.9ms | ActiveRecord: 2.6ms | Allocations: 44565)
 
 
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 14:25:01 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "todo"=>{"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2"}}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms | Allocations: 1000)
+
+
+  
+TypeError (no implicit conversion of Time into String):
+  
+app/controllers/application_controller.rb:26:in `session_expired?'
+Started POST "/users/login" for 127.0.0.1 at 2023-03-23 14:25:39 +0300
+Processing by UsersController#login as */*
+  Parameters: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "user"=>{}}
+[31mUnpermitted parameters: :title, :description, :priority, :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007ff51800c188>, params: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "controller"=>"users", "action"=>"login", "user"=>{}} }[0m
+[31mUnpermitted parameters: :title, :description, :priority, :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007ff51800c188>, params: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "controller"=>"users", "action"=>"login", "user"=>{}} }[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = NULL) ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+Completed 401 Unauthorized in 11ms (Views: 0.9ms | ActiveRecord: 0.8ms | Allocations: 1353)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2023-03-23 14:25:45 +0300
+Processing by UsersController#login as */*
+  Parameters: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "user"=>{}}
+[31mUnpermitted parameters: :title, :description, :priority, :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007ff5104fbca0>, params: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "controller"=>"users", "action"=>"login", "user"=>{}} }[0m
+[31mUnpermitted parameters: :title, :description, :priority, :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007ff5104fbca0>, params: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "controller"=>"users", "action"=>"login", "user"=>{}} }[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = NULL OR email = NULL) ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+Completed 401 Unauthorized in 7ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 893)
+
+
