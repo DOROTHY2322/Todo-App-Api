@@ -1,24 +1,47 @@
-# README
+# TODO-RAILS-API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Description
 
-Things you may want to cover:
+- This is a backend server for a TODO demo app, it is built with ruby on Rails.
 
-* Ruby version
+# Getting Started
 
-* System dependencies
+- In order to use this repo you need to have the following installed:
 
-* Configuration
+- OS [either: Windows 10+, Linux or MacOS
 
-* Database creation
+- Ruby - 3.1.+
 
-* Database initialization
+# Installation
 
-* How to run the test suite
+- To use this repo on your machine requires some simple steps
 
-* Services (job queues, cache servers, search engines, etc.)
+# Alternative One
 
-* Deployment instructions
+- Open a terminal / command line interface on your computer
 
-* ...
+- Clone the repo by using the following:
+
+        -  git@github.com:DOROTHY2322/Todo-App-Api.git
+
+- Change directory to the repo folder:
+
+        - cd Todo-App-Api.git
+
+- Open it in Visual Studio Code
+
+        - code .
+
+(Alternate Option) Open it in any editor of your choice.
+
+# Alternative Two
+
+- On the top right corner of this page there is a button labelled Fork.
+
+- Click on that button to fork the repo to your own account.
+
+- Take on the process in Alternative One above.
+
+- Remember to replace your username when cloning.
+
+        - git@github.com:DOROTHY2322/Todo-App-Api.git
