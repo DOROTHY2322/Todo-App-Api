@@ -90,3 +90,270 @@ Processing by UsersController#register as */*
 Completed 422 Unprocessable Entity in 400ms (Views: 73.6ms | ActiveRecord: 2.8ms | Allocations: 9757)
 
 
+Started POST "//users" for 127.0.0.1 at 2023-03-23 12:05:33 +0300
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007fe84c016b70>, params: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (86.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Donald"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "donald@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Donald"], ["email", "donald@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-03-23 09:05:37.734361"], ["updated_at", "2023-03-23 09:05:37.734361"]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mTRANSACTION (268.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "Donald"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "donald@gmail.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+Completed 500 Internal Server Error in 4174ms (ActiveRecord: 358.9ms | Allocations: 6611)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:12:in `save_user'
+app/controllers/users_controller.rb:5:in `register'
+Started POST "//users" for 127.0.0.1 at 2023-03-23 12:09:10 +0300
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007fe85005fa60>, params: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Donald"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "donald@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Donald"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "donald@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+Completed 422 Unprocessable Entity in 416ms (Views: 3.9ms | ActiveRecord: 5.2ms | Allocations: 6857)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-03-23 12:09:29 +0300
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007fe8508c2950>, params: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Donald"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "donald@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Donald"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "donald@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+Completed 422 Unprocessable Entity in 336ms (Views: 2.4ms | ActiveRecord: 1.5ms | Allocations: 4529)
+
+
+Started DELETE "/users/logout" for 127.0.0.1 at 2023-03-23 12:09:59 +0300
+Processing by UsersController#logout as */*
+  Parameters: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:20:in `remove_user'
+app/controllers/users_controller.rb:27:in `logout'
+Started DELETE "/users" for 127.0.0.1 at 2023-03-23 12:10:09 +0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/users"):
+  
+Started DELETE "/user/logout" for 127.0.0.1 at 2023-03-23 12:10:20 +0300
+  
+ActionController::RoutingError (No route matches [DELETE] "/user/logout"):
+  
+Started DELETE "/users/logout" for 127.0.0.1 at 2023-03-23 12:10:41 +0300
+Processing by UsersController#logout as */*
+  Parameters: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 105)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:20:in `remove_user'
+app/controllers/users_controller.rb:27:in `logout'
+Started POST "/users/login" for 127.0.0.1 at 2023-03-23 12:11:08 +0300
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007fe860dcfaf0>, params: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}} }[0m
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007fe860dcfaf0>, params: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = 'Donald' OR email = 'donald@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007fe860dcfaf0>, params: {"username"=>"Donald", "password"=>"[FILTERED]", "email"=>"donald@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Donald", "email"=>"donald@gmail.com"}} }[0m
+Completed 500 Internal Server Error in 332ms (ActiveRecord: 0.2ms | Allocations: 1473)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:13:in `save_user'
+app/controllers/users_controller.rb:19:in `login'
+Started POST "/users/register" for 127.0.0.1 at 2023-03-23 12:19:36 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/users/register"):
+  
+Started POST "/users/login" for 127.0.0.1 at 2023-03-23 12:19:58 +0300
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007fe850f21670>, params: {"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com"}} }[0m
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007fe850f21670>, params: {"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = 'DOROTHYj' OR email = 'dorothy@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007fe850f21670>, params: {"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com"}} }[0m
+Completed 500 Internal Server Error in 313ms (ActiveRecord: 1.7ms | Allocations: 3030)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:13:in `save_user'
+app/controllers/users_controller.rb:19:in `login'
+Started POST "/users/logout" for 127.0.0.1 at 2023-03-23 12:20:30 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/users/logout"):
+  
+Started DELETE "/users/logout" for 127.0.0.1 at 2023-03-23 12:20:41 +0300
+Processing by UsersController#logout as */*
+  Parameters: {"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 107)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:20:in `remove_user'
+app/controllers/users_controller.rb:27:in `logout'
+Started GET "/users/check_login_status" for 127.0.0.1 at 2023-03-23 12:21:20 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/check_login_status"):
+  
+Started GET "/user/check_login_status" for 127.0.0.1 at 2023-03-23 12:21:32 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/user/check_login_status"):
+  
+Started GET "/user/login/check" for 127.0.0.1 at 2023-03-23 12:21:54 +0300
+Processing by UsersController#check_login_status as */*
+  Parameters: {"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 111)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:25:in `session_expired?'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTodos (20230323093101)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar NOT NULL, "description" text NOT NULL, "status" integer DEFAULT 0 NOT NULL, "priority" integer DEFAULT 0 NOT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d94154aa95"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_todos_on_user_id" ON "todos" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230323093101"]]
+  [1m[36mTRANSACTION (138.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 12:37:12 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "todo"=>{"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 1.4ms | Allocations: 148)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:25:in `session_expired?'
+Started POST "/" for 127.0.0.1 at 2023-03-23 12:39:42 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/"):
+  
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 12:39:52 +0300
+Processing by TodosController#create as */*
+  Parameters: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "todo"=>{"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2"}}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 89)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:25:in `session_expired?'
+Started GET "/user/login/check" for 127.0.0.1 at 2023-03-23 12:41:44 +0300
+Processing by UsersController#check_login_status as */*
+  Parameters: {"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"DOROTHYj", "email"=>"dorothy@gmail.com"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 157)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:25:in `session_expired?'
+Started DELETE "/users/logout" for 127.0.0.1 at 2023-03-23 12:53:01 +0300
+Processing by UsersController#logout as */*
+  Parameters: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "user"=>{}}
+Completed 500 Internal Server Error in 3ms (Allocations: 152)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:20:in `remove_user'
+app/controllers/users_controller.rb:27:in `logout'
+Started DELETE "/users/logout" for 127.0.0.1 at 2023-03-23 13:02:23 +0300
+Processing by UsersController#logout as */*
+  Parameters: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "user"=>{}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.3ms | Allocations: 214)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:20:in `remove_user'
+app/controllers/users_controller.rb:27:in `logout'
+Started DELETE "/users/logout" for 127.0.0.1 at 2023-03-23 13:13:34 +0300
+Processing by UsersController#logout as */*
+  Parameters: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "user"=>{}}
+Completed 500 Internal Server Error in 1ms (Allocations: 105)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/application_controller.rb:20:in `remove_user'
+app/controllers/users_controller.rb:27:in `logout'
+Started POST "/users/logout" for 127.0.0.1 at 2023-03-23 14:23:53 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/users/logout"):
+  
+Started POST "/users" for 127.0.0.1 at 2023-03-23 14:24:04 +0300
+Processing by UsersController#register as */*
+  Parameters: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "user"=>{}}
+[31mUnpermitted parameters: :title, :description, :priority, :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007ff510008900>, params: {"title"=>"Add Todo endpoint", "description"=>"make sure to add the create todos", "priority"=>"2", "controller"=>"users", "action"=>"register", "user"=>{}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+Completed 422 Unprocessable Entity in 220ms (Views: 43.9ms | ActiveRecord: 2.6ms | Allocations: 44565)
+
+
