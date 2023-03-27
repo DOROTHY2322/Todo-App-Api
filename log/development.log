@@ -808,3 +808,171 @@ Processing by TodosController#destroy as */*
 Completed 204 No Content in 150ms (Views: 0.4ms | ActiveRecord: 128.7ms | Allocations: 2810)
 
 
+Started GET "/todos" for 127.0.0.1 at 2023-03-23 15:25:35 +0300
+Processing by TodosController#index as */*
+  Parameters: {"title"=>"writing a Readme", "description"=>"writing a very detailed Readme file", "priority"=>1, "todo"=>{"title"=>"writing a Readme", "description"=>"writing a very detailed Readme file", "priority"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `user'
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/application_controller.rb:7:in `app_response'
+Completed 200 OK in 12ms (Views: 5.1ms | ActiveRecord: 0.6ms | Allocations: 1566)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-03-24 18:45:51 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007febe08fe228>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Lavinia"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lavinia@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:6:in `register'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Lavinia"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lavinia@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `register'
+Completed 422 Unprocessable Entity in 508ms (Views: 13.1ms | ActiveRecord: 3.2ms | Allocations: 43446)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2023-03-24 18:46:08 +0300
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007febd4023c90>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007febd4023c90>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = 'Lavinia' OR email = 'lavinia@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007febd4023c90>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+Completed 200 OK in 325ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 2135)
+
+
+Started POST "/register" for 127.0.0.1 at 2023-03-24 18:54:39 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/register"):
+  
+Started POST "/register" for 127.0.0.1 at 2023-03-24 18:55:07 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/register"):
+  
+Started OPTIONS "/register" for ::1 at 2023-03-24 18:55:59 +0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/register"):
+  
+Started POST "/login" for 127.0.0.1 at 2023-03-24 19:47:49 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/login" for 127.0.0.1 at 2023-03-24 19:47:50 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/login" for 127.0.0.1 at 2023-03-24 19:48:08 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/login" for 127.0.0.1 at 2023-03-24 19:48:24 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/users/login" for 127.0.0.1 at 2023-03-24 19:48:55 +0300
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f3e2007ba88>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f3e2007ba88>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = 'Lavinia' OR email = 'lavinia@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f3e2007ba88>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+Completed 200 OK in 564ms (Views: 17.5ms | ActiveRecord: 1.6ms | Allocations: 38599)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-03-24 19:49:11 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/login" for 127.0.0.1 at 2023-03-24 19:49:21 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/login" for 127.0.0.1 at 2023-03-24 19:49:49 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started OPTIONS "/users/login" for ::1 at 2023-03-24 19:51:21 +0300
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/users/login"):
+  
+Started POST "/login" for 127.0.0.1 at 2023-03-24 19:51:43 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/users/login" for 127.0.0.1 at 2023-03-24 20:17:35 +0300
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f3e180e12f0>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f3e180e12f0>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+  [1m[36mUser Load (21.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = 'Lavinia' OR email = 'lavinia@gmail.com') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f3e180e12f0>, params: {"username"=>"Lavinia", "password"=>"[FILTERED]", "email"=>"lavinia@gmail.com", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"Lavinia", "email"=>"lavinia@gmail.com"}} }[0m
+Completed 200 OK in 436ms (Views: 24.0ms | ActiveRecord: 24.6ms | Allocations: 1655)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-03-24 20:28:17 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started GET "/todos" for 127.0.0.1 at 2023-03-24 20:36:27 +0300
+Processing by TodosController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:36:in `user'
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/application_controller.rb:7:in `app_response'
+Completed 200 OK in 1016ms (Views: 212.5ms | ActiveRecord: 4.7ms | Allocations: 28965)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2023-03-27 12:04:41 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/dorothy/Development/code/phase-4/Todo-App-Api/app/controllers/application_controller.rb:19: syntax error, unexpected unary+, expecting '}'
+...           exp: Time.now.to_i +(6 * 3600)
+...                              ^
+/home/dorothy/Development/code/phase-4/Todo-App-Api/app/controllers/application_controller.rb:20: syntax error, unexpected '}', expecting `end'
+        }
+        ^
+/home/dorothy/Development/code/phase-4/Todo-App-Api/app/controllers/application_controller.rb:24: syntax error, unexpected '\n', expecting '.' or &. or :: or '['
+/home/dorothy/Development/code/phase-4/Todo-App-Api/app/controllers/application_controller.rb:42: syntax error, unexpected ':', expecting `end'
+                data: token[0]["data"]
+                    ^
+/home/dorothy/Development/code/phase-4/Todo-App-Api/app/controllers/application_controller.rb:79: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/application_controller.rb:19: syntax error, unexpected unary+, expecting '}'
+app/controllers/application_controller.rb:20: syntax error, unexpected '}', expecting `end'
+app/controllers/application_controller.rb:24: syntax error, unexpected '\n', expecting '.' or &. or :: or '['
+app/controllers/application_controller.rb:42: syntax error, unexpected ':', expecting `end'
+app/controllers/application_controller.rb:79: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/application_controller.rb:19: syntax error, unexpected unary+, expecting '}'
+app/controllers/application_controller.rb:20: syntax error, unexpected '}', expecting `end'
+app/controllers/application_controller.rb:24: syntax error, unexpected '\n', expecting '.' or &. or :: or '['
+app/controllers/application_controller.rb:42: syntax error, unexpected ':', expecting `end'
+app/controllers/application_controller.rb:79: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "/users/login" for 127.0.0.1 at 2023-03-27 12:07:19 +0300
+Processing by UsersController#login as */*
+  Parameters: {"username"=>"lavinia", "password"=>"[FILTERED]", "user"=>{"username"=>"lavinia"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f5e54118578>, params: {"username"=>"lavinia", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"lavinia"}} }[0m
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f5e54118578>, params: {"username"=>"lavinia", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"lavinia"}} }[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username = 'lavinia' OR email = NULL) ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `login'
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: login, request: #<ActionDispatch::Request:0x00007f5e54118578>, params: {"username"=>"lavinia", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"login", "user"=>{"username"=>"lavinia"}} }[0m
+Completed 200 OK in 510ms (Views: 0.8ms | ActiveRecord: 1.9ms | Allocations: 38761)
+
+
+Started GET "/todos" for 127.0.0.1 at 2023-03-27 12:11:38 +0300
+Processing by TodosController#index as */*
+  Parameters: {"username"=>"lavinia", "password"=>"[FILTERED]", "todo"=>{}}
+Completed 422 Unprocessable Entity in 75ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1181)
+
+
